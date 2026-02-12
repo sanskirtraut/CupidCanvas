@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupid's Canvas Submission Template</title>
+    <link rel="stylesheet" href="cupid-canvas.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+	   <nav class="navbar">
+	       <ul>
+		  <img src="assets/images/multi-hearts.png" alt="hearts" width="100" height="100" class="nav-hearts">
+		  <a href="index.html" class="btn">Page 1</a>
+          <img src="assets/images/multi-hearts.png" alt="hearts"  width="100" height="100" class="nav-hearts">
+	       </ul> 
+	   </nav>
+        </div>
+    </header>
+    <div class="bg-sky">
+        <img src="assets/images/cupids2.png" alt="cupids" class="cupids-fly">
+        <br>
+        <div class="p2-container">
+            <img src="assets/images/big-heart.png" alt="heart-background" class="heart-background">
+            <img src="assets/images/couple-on-bench.png" alt="couple" class="couple">
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Cupid's Canvas - Submission Template</p>
+    </footer>
+
+    <script>
+        const pageSource = document.getElementById('page-source');
+        const copyButton = document.getElementById('copy-page-source');
+        const copyStatus = document.getElementById('copy-status');
+
+        if (pageSource) {
+            pageSource.textContent = document.documentElement.outerHTML;
+        }
+
+        if (copyButton && pageSource) {
+            copyButton.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(pageSource.textContent);
+                    if (copyStatus) {
+                        copyStatus.textContent = 'Copied page HTML.';
+                    }
+                } catch (error) {
+                    if (copyStatus) {
+                        copyStatus.textContent = 'Copy failed. Select and copy the code manually.';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

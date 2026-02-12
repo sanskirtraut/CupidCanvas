@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupid's Canvas Submission Template</title>
+    <link rel="stylesheet" href="cupid-canvas.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+
+        </div>
+    </header>
+        <img src="assets/images/dovebird.png" alt="cupids" class="fly">
+        <br>
+            <img src="assets/images/wedding-hall.png" alt="hall" class="hall">
+            <img src="assets/images/married.png" alt="couple" class="married">
+
+    <footer class="footer">
+        <p>Cupid's Canvas - Submission Template</p>
+    </footer>
+
+    <script>
+        const pageSource = document.getElementById('page-source');
+        const copyButton = document.getElementById('copy-page-source');
+        const copyStatus = document.getElementById('copy-status');
+
+        if (pageSource) {
+            pageSource.textContent = document.documentElement.outerHTML;
+        }
+
+        if (copyButton && pageSource) {
+            copyButton.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(pageSource.textContent);
+                    if (copyStatus) {
+                        copyStatus.textContent = 'Copied page HTML.';
+                    }
+                } catch (error) {
+                    if (copyStatus) {
+                        copyStatus.textContent = 'Copy failed. Select and copy the code manually.';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
