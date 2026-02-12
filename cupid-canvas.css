@@ -1,43 +1,235 @@
-/* Valentine's Day Color Palette & Variables */
 :root {
   --cupid-pink: #ffafcc;
   --valentine-red: #ff4d6d;
   --love-purple: #c77dff;
   --chocolate: #7b3f00;
   --vanilla: #fffaf0;
-  
-  /* Spacing Variables */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 1rem;
-  --space-4: 2rem;
+  --blush: #fde2e4;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --radius-sm: 8px;
+  --radius-md: 16px;
 }
 
-/* Reduced Motion Preferences */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition: none !important;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--chocolate);
+  background: linear-gradient(135deg, var(--vanilla) 0%, var(--blush) 100%);
+  background-attachment: fixed;
+  padding-bottom: var(--space-xl);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.header {
+  background: linear-gradient(135deg, var(--valentine-red) 0%, var(--love-purple) 100%);
+  color: white;
+  padding: var(--space-xl) 0;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  margin-bottom: var(--space-sm);
+  font-family: 'Georgia', serif;
+}
+
+.header p {
+  opacity: 0.9;
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: var(--space-lg);
+  border-left: 5px solid var(--valentine-red);
+}
+
+.card-title {
+  color: var(--valentine-red);
+  font-size: 1.6rem;
+  margin-bottom: var(--space-md);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-md);
+  background-color: #fff;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+  padding: var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: var(--valentine-red);
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: var(--blush);
+}
+
+.note {
+  margin-top: var(--space-md);
+  font-size: 0.95rem;
+}
+
+.code-preview {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  border-radius: var(--radius-sm);
+  padding: var(--space-lg);
+  margin-top: var(--space-md);
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+}
+
+.code-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.copy-status {
+  font-size: 0.9rem;
+  color: var(--chocolate);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--valentine-red);
+  color: white;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: var(--space-lg);
+  box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+}
+
+.btn:hover {
+  background-color: var(--love-purple);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 77, 109, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--cupid-pink);
+  color: var(--chocolate);
+}
+
+.footer {
+  text-align: center;
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  color: var(--chocolate);
+  border-top: 1px solid var(--cupid-pink);
+}
+
+.multi-hearts{
+  width: 120px;
+  animation: heartbeat 1s infinite;
+  transform-origin: center;
+}
+.p2-container{
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.heart-background{
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+  animation: heartbeating 3s ease-in-out infinite;
+}
+.couple{
+  width: 35%;
+  position: relative;
+  display: flex;
+  gap: 20px;
+  z-index: 2;
+  animation: heartbeating 3s ease-in-out infinite;
+}
+
+.cupids-fly{
+  position: absolute;
+  top: 50%;
+  width: 120px;
+  transform: translateY(-50%);
+  animation: flying 4s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+      font-size: 2.2rem;
   }
 }
 
-/* CSS-only page navigation with :target */
-.page {
-  display: none;
-}
-
-.page:target {
-  display: block;
-}
-
-/* Heart animation example */
-@keyframes heartbeat {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+@keyframes heartbeating {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.1); }
+  40%  { transform: scale(1); }
+  60%  { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
 
-.heart {
-  animation: heartbeat 1.5s ease-in-out infinite;
+@keyframes flying {
+
+  0% {
+    left: 0;
+    transform: translateY(-50%) scaleX(1);
+  }
+
+  49% {
+    transform: translateY(-50%) scaleX(1);
+  }
+
+  50% {
+    left: calc(100vw - 120px);
+    transform: translateY(-50%) scaleX(-1); 
+  }
+
+  99% {
+    transform: translateY(-50%) scaleX(-1);
+  }
+
+  100% {
+    left: 0;
+    transform: translateY(-50%) scaleX(1); 
+  }
 }
