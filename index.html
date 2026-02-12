@@ -1,101 +1,67 @@
+
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cupid-canvas.css">
     <title>Cupid's Canvas Submission Template</title>
     <link rel="stylesheet" href="cupid-canvas.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1>Cupid's Canvas Submission Template</h1>
-            <p>Complete this page and submit with your project.</p>
-        </div>
+
+    <header class="main-header">
+        <div class="logo">💘 Cupid's Town</div>
+        <nav>
+            <a href="index.html" class="nav-link">Town Square</a>
+            <a href="page2.html" class="nav-link">Lovers' Park</a>
+            <a href="page3.html" class="nav-link">St. Valentine's Church</a>
+        </nav>
     </header>
 
-    <div class="container">
-        <section class="card">
-            <h2 class="card-title">Team Information</h2>
-            <p>Fill in your team details.</p>
+    <div id="home" class="page active-default">
+        
+        <div class="town-scene">
+            <div class="sky">
+                <div class="cloud cloud-1">☁️</div>
+                <div class="cloud cloud-2">☁️</div>
+                <div class="cupid-fly">👼🏼 🏹</div>
+                <div class="bird">🕊️</div>
+            </div>
+            
+            <div class="ground-layer">
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Team Member Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Team Member: First N: Last N:</td>
-                    </tr>
-                    <tr>
-                        <td>Team Member: First N: Last N:</td>
-                    </tr>
-                    <tr>
-                        <td>Team Member: First N: Last N:</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p class="note">Tip: Use the same naming format as your GitHub commits.</p>
-
-            <h2 class="card-title" style="margin-top: var(--space-lg);">Codd Server Submission URL</h2>
-            <p>Paste the deployment URL that you will submit on the codd server.</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Deployment URL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>https://codd.cs.gsu.edu/~username/project-folder/</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2 class="card-title" style="margin-top: var(--space-lg);">Submission Template Code</h2>
-            <p>Copy the HTML source for this page if you need to reuse or reference it.</p>
-
-            <div class="code-actions">
-                <button class="btn btn-secondary" id="copy-page-source" type="button">Copy Page HTML</button>
-                <span class="copy-status" id="copy-status">Select the code if copy is blocked.</span>
+                 <div class="buildings">
+                    <span class="building">🏠</span>
+                </div>
+                <div class="tree">🌳</div>
+                <div class="buildings">
+                    <span class="building">🏨</span>
+                </div>
+                <div class="tree">🌳</div>
+                 <div class="buildings">
+                    <span class="building">🏪</span>
+                </div>               
+                <div class="tree">🌳</div>
+                 <div class="buildings">
+                    <span class="building">🏡</span>
+                </div>   
+                <div class="road">
+                    <div class="car">🚗</div>
+                </div>
             </div>
 
-            <pre class="code-preview"><code id="page-source"></code></pre>
-
-            <a class="btn" href="IndexCC01.html">Back to Challenge Index</a>
-        </section>
+            <div class="floating-hearts">
+                <div class="heart h1">❤️</div>
+                <div class="heart h2">💖</div>
+                <div class="heart h3">💘</div>
+            </div>
+        </div>
     </div>
 
+
     <footer class="footer">
-        <p>Cupid's Canvas - Submission Template</p>
+        <p>Created with 💖 by Sansca Raut & Malcom Bright | <span class="heartbeat">❤️</span> Love is in the air</p>
     </footer>
 
-    <script>
-        const pageSource = document.getElementById('page-source');
-        const copyButton = document.getElementById('copy-page-source');
-        const copyStatus = document.getElementById('copy-status');
-
-        if (pageSource) {
-            pageSource.textContent = document.documentElement.outerHTML;
-        }
-
-        if (copyButton && pageSource) {
-            copyButton.addEventListener('click', async () => {
-                try {
-                    await navigator.clipboard.writeText(pageSource.textContent);
-                    if (copyStatus) {
-                        copyStatus.textContent = 'Copied page HTML.';
-                    }
-                } catch (error) {
-                    if (copyStatus) {
-                        copyStatus.textContent = 'Copy failed. Select and copy the code manually.';
-                    }
-                }
-            });
-        }
-    </script>
 </body>
-</html>
+    </html>
