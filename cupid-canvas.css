@@ -1,43 +1,144 @@
-/* Valentine's Day Color Palette & Variables */
+
 :root {
   --cupid-pink: #ffafcc;
   --valentine-red: #ff4d6d;
   --love-purple: #c77dff;
-  --chocolate: #7b3f00;
-  --vanilla: #fffaf0;
+  --sky-blue: #a2d2ff;
+  --grass-green: #cdb4db; 
+  --white: #ffffff;
+  --text-dark: #2d1b2e;
   
-  /* Spacing Variables */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 1rem;
-  --space-4: 2rem;
+  --font-header: 'Dancing Script', cursive;
+  --font-body: 'Nunito', sans-serif;
 }
 
-/* Reduced Motion Preferences */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition: none !important;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); color: var(--text-dark); background-color: var(--white); overflow-x: hidden; }
+
+
+.main-header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.2);
+    z-index: 1000;
+    border-bottom: 3px solid var(--cupid-pink);
 }
 
-/* CSS-only page navigation with :target */
-.page {
-  display: none;
+.logo { font-family: var(--font-header); font-size: 2rem; color: var(--valentine-red); }
+.nav-link { 
+    text-decoration: none; 
+    color: var(--text-dark); 
+    margin-left: 1.5rem; 
+    font-weight: bold; 
+    transition: color 0.3s;
+}
+.nav-link:hover { color: var(--valentine-red); text-shadow: 0 0 5px var(--cupid-pink); }
+
+
+.page { display: none; min-height: 100vh; animation: fadeIn 0.8s; }
+
+
+.page:target { display: block; }
+
+
+.active-default { display: block; }
+
+:target ~ .active-default { display: none; }
+#home:target { display: block !important; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+.town-scene {
+    height: 60vh;
+    background: linear-gradient(to bottom, var(--sky-blue) 0%, var(--cupid-pink) 100%);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 10px solid var(--love-purple);
 }
 
-.page:target {
-  display: block;
+/* Animations */
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+@keyframes drive { 0% { left: -100px; } 100% { left: 100%; } }
+@keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(100vw); } }
+@keyframes fly-cupid { 
+    0% { left: -10%; top: 20%; } 
+    50% { top: 10%; } 
+    100% { left: 110%; top: 30%; } 
 }
 
-/* Heart animation example */
+/* Scene Elements */
+.cloud { position: absolute; font-size: 4rem; opacity: 0.8; }
+.cloud-1 { top: 10%; left: -10%; animation: drift 25s linear infinite; }
+.cloud-2 { top: 20%; left: -20%; animation: drift 35s linear infinite; animation-delay: 5s; }
+.bird { position: absolute; font-size: 3rem; animation: drift 20s linear infinite; animation-delay: 2s; top: 15%; left: -15%; }
+
+
+.cupid-fly {
+    position: absolute;
+    font-size: 5rem;
+    animation: fly-cupid 15s linear infinite;
+    z-index: 10;
+}
+
+.ground-layer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background: var(--grass-green); /* Abstract grass */
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+.tree { font-size: 8rem; filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.1)); }
+.building { font-size: 8rem; filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.1)); }
+.bench { font-size: 5rem; position: relative; }
+
+
+.road {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 40px;
+    background: rgba(255,255,255,0.3);
+}
+.car { position: absolute; bottom: 5px; font-size: 2rem; animation: drive 12s linear infinite; }
+
+
+.content-wrapper { max-width: 800px; margin: -50px auto 0; position: relative; z-index: 20; padding: 0 1rem; }
+
+
+h1 { color: var(--valentine-red); font-family: var(--font-header); font-size: 3rem; margin-bottom: 1rem; }
+
+.btn-primary {
+    display: inline-block;
+    background: var(--valentine-red);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+.btn-primary:hover { transform: scale(1.1); background: var(--love-purple); }
+
+.floating-hearts .heart { position: absolute; animation: float 3s ease-in-out infinite; }
+.h1 { top: 50%; left: 20%; font-size: 2rem; animation-delay: 0s; }
+.h2 { top: 40%; right: 15%; font-size: 1.5rem; animation-delay: 1s; }
+
+.footer { text-align: center; padding: 2rem; margin-top: 2rem; background: var(--cupid-pink); color: white; }
+.heartbeat { display: inline-block; animation: heartbeat 1s infinite; }
+
 @keyframes heartbeat {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
-}
-
-.heart {
-  animation: heartbeat 1.5s ease-in-out infinite;
 }
