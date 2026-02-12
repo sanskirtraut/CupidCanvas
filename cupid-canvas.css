@@ -2,215 +2,200 @@
   --cupid-pink: #ffafcc;
   --valentine-red: #ff4d6d;
   --love-purple: #c77dff;
-  --chocolate: #7b3f00;
-  --vanilla: #fffaf0;
-  --blush: #fde2e4;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --radius-sm: 8px;
-  --radius-md: 16px;
+  --sky-blue: #a2d2ff;
+  --grass-green: #cdb4db; 
+  --white: #ffffff;
+  --text-dark: #2d1b2e;
+  
+  --font-header: 'Dancing Script', cursive;
+  --font-body: 'Nunito', sans-serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); color: var(--text-dark); background-color: var(--white); overflow-x: hidden; }
+
+
+.main-header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.2);
+    z-index: 1000;
+    border-bottom: 3px solid var(--cupid-pink);
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: var(--chocolate);
-  background: linear-gradient(135deg, var(--vanilla) 0%, var(--blush) 100%);
-  background-attachment: fixed;
-  padding-bottom: var(--space-xl);
+.logo { font-family: var(--font-header); font-size: 2rem; color: var(--valentine-red); }
+.nav-link { 
+    text-decoration: none; 
+    color: var(--text-dark); 
+    margin-left: 1.5rem; 
+    font-weight: bold; 
+    transition: color 0.3s;
+}
+.nav-link:hover { color: var(--valentine-red); text-shadow: 0 0 5px var(--cupid-pink); }
+
+
+.page { display: none; min-height: 100vh; animation: fadeIn 0.8s; }
+
+
+.page:target { display: block; }
+
+
+.active-default { display: block; }
+
+:target ~ .active-default { display: none; }
+#home:target { display: block !important; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+.town-scene {
+    height: 60vh;
+    background: linear-gradient(to bottom, var(--sky-blue) 0%, var(--cupid-pink) 100%);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 10px solid var(--love-purple);
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
+/* Animations */
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+@keyframes drive { 0% { left: -100px; } 100% { left: 100%; } }
+@keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(100vw); } }
+@keyframes fly-cupid { 
+    0% { left: -10%; top: 20%; } 
+    50% { top: 10%; } 
+    100% { left: 110%; top: 30%; } 
 }
 
-.header {
-  background: linear-gradient(135deg, var(--valentine-red) 0%, var(--love-purple) 100%);
-  color: white;
-  padding: var(--space-xl) 0;
-  text-align: center;
-  margin-bottom: var(--space-xl);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+/* Scene Elements */
+.cloud { position: absolute; font-size: 4rem; opacity: 0.8; }
+.cloud-1 { top: 10%; left: -10%; animation: drift 25s linear infinite; }
+.cloud-2 { top: 20%; left: -20%; animation: drift 35s linear infinite; animation-delay: 5s; }
+.bird { position: absolute; font-size: 3rem; animation: drift 20s linear infinite; animation-delay: 2s; top: 15%; left: -15%; }
+
+
+.cupid-fly {
+    position: absolute;
+    font-size: 5rem;
+    animation: fly-cupid 15s linear infinite;
+    z-index: 10;
 }
 
-.header h1 {
-  font-size: 2.8rem;
-  margin-bottom: var(--space-sm);
-  font-family: 'Georgia', serif;
+.ground-layer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background: var(--grass-green); /* Abstract grass */
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding-bottom: 20px;
 }
 
-.header p {
-  opacity: 0.9;
-}
+.tree { font-size: 8rem; filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.1)); }
+.building { font-size: 8rem; filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.1)); }
+.bench { font-size: 5rem; position: relative; }
 
-.card {
-  background-color: white;
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  padding: var(--space-lg);
-  border-left: 5px solid var(--valentine-red);
+.road {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 40px;
+    background: rgba(255,255,255,0.3);
 }
+.car { position: absolute; bottom: 5px; font-size: 2rem; animation: drive 12s linear infinite; }
 
-.card-title {
-  color: var(--valentine-red);
-  font-size: 1.6rem;
-  margin-bottom: var(--space-md);
-}
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: var(--space-md);
-  background-color: #fff;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
+.content-wrapper { max-width: 800px; margin: -50px auto 0; position: relative; z-index: 20; padding: 0 1rem; }
 
-th, td {
-  padding: var(--space-md);
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
 
-th {
-  background-color: var(--valentine-red);
-  color: white;
-}
+h1 { color: var(--valentine-red); font-family: var(--font-header); font-size: 3rem; margin-bottom: 1rem; }
 
-tr:nth-child(even) {
-  background-color: var(--blush);
+.btn-primary {
+    display: inline-block;
+    background: var(--valentine-red);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: transform 0.2s;
 }
+.btn-primary:hover { transform: scale(1.1); background: var(--love-purple); }
 
-.note {
-  margin-top: var(--space-md);
-  font-size: 0.95rem;
-}
+.floating-hearts .heart { position: absolute; animation: float 3s ease-in-out infinite; }
+.h1 { top: 50%; left: 20%; font-size: 2rem; animation-delay: 0s; }
+.h2 { top: 40%; right: 15%; font-size: 1.5rem; animation-delay: 1s; }
 
-.code-preview {
-  background-color: #2d2d2d;
-  color: #f8f8f2;
-  border-radius: var(--radius-sm);
-  padding: var(--space-lg);
-  margin-top: var(--space-md);
-  overflow-x: auto;
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-}
-
-.code-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
-  flex-wrap: wrap;
-}
-
-.copy-status {
-  font-size: 0.9rem;
-  color: var(--chocolate);
-}
-
-.btn {
-  display: inline-block;
-  background-color: var(--valentine-red);
-  color: white;
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: var(--space-lg);
-  box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
-}
-
-.btn:hover {
-  background-color: var(--love-purple);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(255, 77, 109, 0.4);
-}
-
-.btn-secondary {
-  background-color: var(--cupid-pink);
-  color: var(--chocolate);
-}
-
-.footer {
-  text-align: center;
-  margin-top: var(--space-xl);
-  padding: var(--space-lg);
-  color: var(--chocolate);
-  border-top: 1px solid var(--cupid-pink);
-}
+.footer { text-align: center; padding: 2rem; margin-top: 2rem; background: var(--cupid-pink); color: white; }
+.heartbeat { display: inline-block; animation: heartbeat 1s infinite; }
 .bg-sky{
   height: 100%;
   background: url("assets/images/sky-bg.png") center / cover no-repeat;
-}
-.multi-hearts{
+ }
+ .multi-hearts{
   width: 120px;
   animation: heartbeat 1s infinite;
   transform-origin: center;
-}
-.p2-container{
+ }
+ .p2-container{
   margin-top: 20px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-}
-.heart-background{
+ }
+ .heart-background{
   position: absolute;
   width: 50%;
   z-index: 1;
   animation: heartbeating 3s ease-in-out infinite;
-}
-.couple{
+ }
+ .couple{
   width: 35%;
   position: relative;
   display: flex;
   gap: 20px;
   z-index: 2;
   animation: heartbeating 3s ease-in-out infinite;
-}
-
-.fly{
+ }
+ 
+ 
+ .fly{
   position: absolute;
   top: 50%;
   width: 120px;
   transform: translateY(-50%);
   animation: flying 4s ease-in-out infinite alternate;
   z-index: 4;
-}
-.married{
+ }
+ .married{
   position: relative;
   display: flex;
   z-index: 2;
-}
-.hall{
+ }
+ .hall{
   position: absolute;
   width: 100%;
   z-index: 1;
-}
-
-@media (max-width: 768px) {
+ }
+ 
+ 
+ @media (max-width: 768px) {
   .header h1 {
       font-size: 2.2rem;
   }
+}
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 @keyframes heartbeating {
@@ -219,30 +204,35 @@ tr:nth-child(even) {
   40%  { transform: scale(1); }
   60%  { transform: scale(1.15); }
   100% { transform: scale(1); }
-}
-
-@keyframes flying {
-
+ }
+ 
+ 
+ @keyframes flying {
+ 
+ 
   0% {
     left: 0;
     transform: translateY(-50%) scaleX(1);
   }
-
+ 
+ 
   49% {
     transform: translateY(-50%) scaleX(1);
   }
-
+ 
+ 
   50% {
     left: calc(100vw - 120px);
-    transform: translateY(-50%) scaleX(-1); 
+    transform: translateY(-50%) scaleX(-1);
   }
-
+ 
+ 
   99% {
     transform: translateY(-50%) scaleX(-1);
   }
 
   100% {
     left: 0;
-    transform: translateY(-50%) scaleX(1); 
+    transform: translateY(-50%) scaleX(1); /* flip back */
   }
-}
+ } 
