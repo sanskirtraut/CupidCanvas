@@ -156,7 +156,10 @@ tr:nth-child(even) {
   color: var(--chocolate);
   border-top: 1px solid var(--cupid-pink);
 }
-
+.bg-sky{
+  height: 100%;
+  background: url("assets/images/sky-bg.png") center / cover no-repeat;
+}
 .multi-hearts{
   width: 120px;
   animation: heartbeat 1s infinite;
@@ -185,13 +188,23 @@ tr:nth-child(even) {
   animation: heartbeating 3s ease-in-out infinite;
 }
 
-.cupids-fly{
+.fly{
   position: absolute;
   top: 50%;
   width: 120px;
   transform: translateY(-50%);
   animation: flying 4s ease-in-out infinite alternate;
-  z-index: 3;
+  z-index: 4;
+}
+.married{
+  position: relative;
+  display: flex;
+  z-index: 2;
+}
+.hall{
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
